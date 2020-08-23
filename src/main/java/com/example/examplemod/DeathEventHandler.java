@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 public class DeathEventHandler {
@@ -15,7 +16,8 @@ public class DeathEventHandler {
 	public void LivingDeathEvent(LivingDeathEvent e) {
 		try {
 			FileWriter myfile = new FileWriter("/home/alice/died.txt");
-			myfile.write(e.getSource().getDamageType());
+			EntityLivingBase entity = e.getEntityLiving();
+			myfile.write(e.getSource().getDeathMessage(entity).getUnformattedComponentText());
 			myfile.close();
 
 		} catch (IOException e1) {
