@@ -19,9 +19,9 @@ public class DeathEventHandler {
 			FileWriter myfile = new FileWriter("/home/alice/died.txt", true);
 			BufferedWriter bw = new BufferedWriter(myfile);
 			EntityLivingBase entity = e.getEntityLiving();
-			bw.append(e.getSource().getDeathMessage(entity).getUnformattedComponentText() + "\n");
+			bw.write(e.getSource().getDeathMessage(entity).getUnformattedComponentText() + "\n");
 			bw.close();
-
+			myfile.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
